@@ -24,8 +24,8 @@ You can install all the required packages using this command:
 
 Archlinux :
 
-sudo pacman -S i3wm nm-applet polybar rofi alsa-utils lxappearance-gtk3 network-tools; \
-yay -S light
+sudo pacman -S i3wm nm-applet polybar rofi imagemagick feh xorg-xrandr xorg-xdpyinfo alsa-utils lxappearance-gtk3 network-tools; \
+yay -S light betterlockscreen
 
 _______________________________________________________________________
 
@@ -38,6 +38,12 @@ https://github.com/haikarainen/light
 ```
 
 the windowing system theme, icon pack and cursor theme are intended to be customized using the `lxappearance-gtk3` package.
+
+As we're using betterlockscreen, we have to enable betterlockscren's systemd unit with this command: 
+
+```bash
+systemctl enable betterlockscreen@$USER
+```
 
 ### Inspiration Source
 
