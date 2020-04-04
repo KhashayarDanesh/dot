@@ -1,0 +1,207 @@
+[bar/i3wmthemer_bar]
+width = 100%
+height = 50
+radius = 2
+fixed-center = true
+
+background = #000000
+foreground = #00FFFF
+#foreground = #657b83
+
+line-size = 5
+line-color = #00FFFF
+
+border-size = 3
+border-color = #00FFFF
+
+padding-left = 2
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 1
+
+font-0 = "Source Code Pro Semibold:size=15;1"
+font-1 = "Font Awesome 5 Free:style=Solid:size=15;1"
+font-2 = "Font Awesome 5 Brands:size=15;1"
+
+modules-left = i3 
+modules-center = date
+modules-right = battery pulseaudio wlan eth powermenu
+
+tray-position = right
+;tray-padding =
+wm-restack = i3
+override-redirect = true
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+index-sort = true
+wrapping-scroll = false
+
+label-mode-padding = 2
+label-mode-foreground = #00FFFF
+label-mode-background = #000000
+
+label-focused = %index%
+label-focused-background = #000000
+label-focused-foreground = #00FFFF
+label-focused-padding = 2
+
+label-unfocused = %index%
+label-unfocused-background = #000000
+label-unfocused-foreground = #00FFFF
+label-unfocused-padding = 2
+
+label-visible = %index%
+label-visible-background = #000000
+label-visible-foreground = #00FFFF
+label-visible-padding = 2
+
+label-urgent = %index%
+label-urgent-background = #000000
+label-urgent-padding = 2
+
+[module/battery]
+type = internal/battery
+full-at = 99
+battery = BAT0
+adapter = AC
+poll-interval = 5
+format-background = #000000
+format-foreground = #000FFF
+
+format-charging = <animation-charging> <label-charging>
+format-full = <ramp-capacity> - CHARGED
+label-charging = Charging %percentage%%
+label-discharging = Discharging %percentage%%
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+bar-capacity-width = 10
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-framerate = 750
+animation-discharging-0 = 
+animation-discharging-1 = 
+animation-discharging-2 = 
+animation-discharging-3 = 
+animation-discharging-4 = 
+animation-discharging-framerate = 500
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+sink = alsa_output.pci-0000_00_1f.3.analog-stereo
+use-ui-max = true
+interval = 5
+format-volume = alsa: <label-volume>
+format-volume-foreground = #00FFFF
+format-volume-background = #000000
+label-muted = 🔇 muted
+ramp-volume-0 = 🔈
+ramp-volume-1 = 🔉
+ramp-volume-2 = 🔊
+
+
+[module/wlan]
+type = internal/network
+interface = wlp0s20f3
+interval = 3.0
+
+format-connected = <ramp-signal> <label-connected>
+format-connected-foreground = #00FFFF
+format-connected-background = #000000
+format-connected-padding = 0
+label-connected = %essid%
+
+format-disconnected = N/A
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+ramp-signal-foreground = #00FFFF
+ramp-signal-background = #000000
+
+[module/eth]
+type = internal/network
+interface = enp0s31f6
+interval = 3.0
+
+format-connected-padding = 2
+format-connected-foreground = #00FFFF
+format-connected-background = #000000
+format-connected-prefix = " "
+format-connected-prefix-foreground = #00FFFF
+label-connected = %local_ip%
+
+format-disconnected =
+
+[module/date]
+type = internal/date
+interval = 1
+
+date =
+date-alt = "%Y-%m-%d"
+
+time = %I:%M %p %Y-%m-%d
+time-alt = %H:%M:%S
+
+format-prefix = 
+format-foreground = #00FFFF
+format-background = #000000
+format-padding = 2
+
+label = %date% %time%
+
+[module/powermenu]
+type = custom/menu
+
+expand-right = true
+
+format-spacing = 1
+
+label-open = 
+label-open-foreground = #657b83
+label-close =  cancel
+label-close-foreground = #BA2922
+label-separator = |
+label-separator-foreground = #BA2922
+
+menu-0-0 = reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 = power off
+menu-0-1-exec = menu-open-2
+menu-0-2 = log off
+menu-0-2-exec = menu-open-3
+
+menu-1-0 = cancel
+menu-1-0-exec = menu-open-0
+menu-1-1 = reboot
+menu-1-1-exec = reboot
+
+menu-2-0 = power off
+menu-2-0-exec = poweroff
+menu-2-1 = cancel
+menu-2-1-exec = menu-open-0
+
+menu-3-0 = log off
+menu-3-0-exec = pkill -KILL -u $USER
+menu-3-1 = cancel
+menu-3-1-exec = menu-open-0
+
+[settings]
+screenchange-reload = true
+
+[global/wm]
+margin-top = 0
+margin-bottom = 0
